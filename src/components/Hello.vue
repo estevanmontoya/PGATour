@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <button v-on:click="logout">Logout</button>
     <h2>Create a new form action:</h2>
   </div>
 </template>
@@ -14,7 +15,13 @@ export default {
       msg: 'PGA Tour Superstore Form Actions'
     }
   },
-  methods: {}
+  methods: {
+    logout: function() {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('login')
+      })
+    }
+  }
 }
 </script>
 
